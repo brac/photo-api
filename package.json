@@ -1,0 +1,18 @@
+{
+  "name": "photo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "db:reset" : "dropdb photo_api && createdb photo_api && psql photo_api < ./database/photoSchema.sql && psql photo_api < ./database/albumSchema.sql && psql photo_api < ./database/photo_fixtures.sql && psql photo_api < ./database/album_fixtures.sql",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "pg": "^7.4.1"
+  }
+}
