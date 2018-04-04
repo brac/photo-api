@@ -1,6 +1,7 @@
 // jshint asi:true
 
 const router = require('express').Router()
+const { lookUp } = require('../helpers')
 
 router.route('/')
   .get((req, res) =>{
@@ -12,16 +13,16 @@ router.route('/')
   })
 
 router.route('/:id')
-  .get((req, res) =>{
-    res.json({message: 'I will preform GET on one record'})
+  .get(lookUp, (req, res) =>{
+    res.json({result: `GET on ${req.photo.description}` })
   })
 
-  .patch((req, res) =>{
-    res.json({message: 'I will preform PATCH'})
+  .patch(lookUp, (req, res) =>{
+    res.json({result: `PATCH on ${req.photo.description}`})
   })
 
-  .delete((req, res) =>{
-    res.json({message: 'I will preform DELETE'})
+  .delete(lookUp, (req, res) => {
+    res.json({result: `DELETE on ${req.photo.description}`})
   })
 
 module.exports = router
